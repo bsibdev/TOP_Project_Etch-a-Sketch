@@ -1,0 +1,21 @@
+body {
+    background-color: white;
+}
+.pixel-container {
+    background-color:red;
+    display:flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+    height:60vh;
+    width:80vw;
+    padding:40px;
+}
+
+
+.pixel {
+    background-color:gray;
+    height:50px;
+    width:50px;
+    outline:auto;
+
+}
