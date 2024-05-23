@@ -1,7 +1,8 @@
 const pixelContainer = document.querySelector('.pixel-container');
 let gridSize =  0;//256;/*document.querySelector('#grid-size')*/
 function getGridSize() {
-    gridSize = prompt("Please enter desired pixel count");
+    value = prompt("Please enter desired pixel count");
+    gridSize = value*value;
     console.log(gridSize);
     if (gridSize > 10000) {
         return 10000;}
@@ -52,6 +53,13 @@ for (i = 0; i < gridSize; i++) {
     pixel.addEventListener('mouseover', () => {
         //console.log('hover');
         pixel.classList.remove('pixel');
+        function randomColor() {
+            let value = Math.floor(Math.random()*256);    
+            return value;
+        }   
+        let pixelId = document.getElementById(`pixel_${i}`);
+        console.log(`pixel_${i}`);
+        pixelId.style.backgroundColor = `${randomColor()},${randomColor()},${randomColor()}`;
         pixel.classList.add('shaded-pixel')
         console.log(pixel)
             });
@@ -96,7 +104,11 @@ function drawPixel(element,event){
         case element :
             pixel.classList.remove('pixel');
             pixel.classList.add('shaded-pixel')
-            console.log(pixel)
+            let red = Math.floor(Math.random()*256);    
+            let green = Math.floor(Math.random()*256);
+            let blue = Math.floor(Math.random()*256);    
+            pixel.style.backgroundColor = `${red},${green},${blue}`;
+            console.log(pixel);
             break;
     } return event.target.id;
 };
