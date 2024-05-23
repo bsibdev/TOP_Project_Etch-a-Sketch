@@ -1,29 +1,26 @@
 body {
-    background-color: white;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
 .pixel-container {
     background-color:red;
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
-    flex-direction:column;
-    flex-wrap:wrap;
-    height:60vh;
-    width:80vw;
     padding:40px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 960px;
+    height: 960px;
+
 }
 
 .pixel, .shaded-pixel {
-    height:3.6vh;
-    width:3.6vw;
-    border:solid;
-    margin:0;
-    padding:0;
-    flex: 1 1 auto;
-
+    flex: 1 0 calc(100% / 16);
+    box-sizing: border-box;
+    border: 1px solid #ddd;
 }
 .pixel {
     background-color:gray;

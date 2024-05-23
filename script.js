@@ -1,13 +1,48 @@
 const pixelContainer = document.querySelector('.pixel-container');
-const gridSize = 256;/*document.querySelector('#grid-size')*/
+let gridSize =  0;//256;/*document.querySelector('#grid-size')*/
+function getGridSize() {
+    gridSize = prompt("Please enter desired pixel count");
+    console.log(gridSize);
+    if (gridSize > 10000) {
+        return 10000;}
+    else if (gridSize <= 10000) {
+        return gridSize;
+    } else return 'Error';
+
+}
+
+const addPixels = document.querySelector('#set-grid');
+
+function clearGrid() {
+    if (pixelIds.length <= 0) {
+        console.log(pixelIds.length);
+        console.log('already clear');
+        return;
+        
+    } else if (pixelIds.length >0) {
+        for (let i = 0; i < pixelIds.length; i++) {
+        const pixel = document.getElementById(`pixel_${i}`);
+        //console.log(`${pixel}`);
+        pixelContainer.removeChild(pixel);
+        console.log(`pixel_${i} Deleted`);
+        
+    }
+        pixelIds = [];
+        }  else return 'error';
+}
 
 
-const pixelIds = []
-
+let pixelIds = []
+function generatePixels(){
 /*generate pixels*/
+clearGrid();
 for (i = 0; i < gridSize; i++) {
     const pixel = document.createElement('div');
     pixel.setAttribute('id',`pixel_${i}`);
+    let pixelHeight = 100/gridSize; 
+    let pixelWidth = 100/gridSize; 
+    pixel.style.width = `10px`;
+    pixel.style.height = `10px`;
     pixelIds.push(`pixel_${i}`);
     pixel.classList.add('pixel');
     const pixelText = document.createElement('h3');
@@ -20,16 +55,35 @@ for (i = 0; i < gridSize; i++) {
         pixel.classList.add('shaded-pixel')
         console.log(pixel)
             });
-        } 
+        }; 
+    }
+    
+const pauseButton = document.querySelector('#pause');
 
-const resetButton = document.querySelector('#reset')
-
-resetButton.addEventListener('click', () => {
-    pixelIds.forEach((element) => {
-        element.classList.remove('shaded-pixel');
-        element.classList.add('pixel')
-    })
-})
+document.addEventListener('click', (event) => {
+    const target = event.target;
+    switch (target.id) {
+        case 'reset' :
+            console.log('clicked reset');
+            for (let i = 0; i < pixelIds.length; i++) {
+                const pixel = document.querySelector(`#pixel_${i}`);
+                console.log(pixel);
+                pixel.classList.remove('shaded-pixel');
+                pixel.classList.add('pixel');
+            }
+            break;
+            //implement feature in futur.
+        case 'pause' :
+            alert('feature is not yet implemented')
+            break;
+        case 'set-grid' :
+            getGridSize();
+            generatePixels();
+            break;
+        case 'clear-grid' :
+            clearGrid();
+            break;
+      }})
 
 /*for (i = 0; i < pixelIds.length; i++) {
     let pixel = document.querySelector(`#pixel_${i}`);
