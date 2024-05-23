@@ -1,7 +1,8 @@
 const pixelContainer = document.querySelector('.pixel-container');
 let gridSize =  0;//256;/*document.querySelector('#grid-size')*/
 function getGridSize() {
-    gridSize = prompt("Please enter desired pixel count");
+    value = prompt("Please enter desired pixel count");
+    gridSize = value*value;
     console.log(gridSize);
     if (gridSize > 10000) {
         return 10000;}
