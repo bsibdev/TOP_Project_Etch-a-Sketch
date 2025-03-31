@@ -62,7 +62,6 @@ for (i = 0; i < gridSize; i++) {
     
 const pauseButton = document.querySelector('#pause');
 
-generatePixels();
 
 document.addEventListener('click', (event) => {
     const target = event.target;
@@ -104,6 +103,8 @@ function drawPixel(element,event){
             break;
     } return event.target.id;
 };
+
+generatePixels();
 
 /*document.addEventListener('mouseover', (event) => {
     
