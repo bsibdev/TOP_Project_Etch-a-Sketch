@@ -1,5 +1,5 @@
 const pixelContainer = document.querySelector('.pixel-container');
-let gridSize =  35;//256;/*document.querySelector('#grid-size')*/
+let gridSize =  900;//256;/*document.querySelector('#grid-size')*/
 function getGridSize() {
     value = prompt("Please enter desired pixel count");
     gridSize = value*value;
@@ -59,7 +59,10 @@ for (i = 0; i < gridSize; i++) {
         }; 
     }
     
+    
 const pauseButton = document.querySelector('#pause');
+
+generatePixels();
 
 document.addEventListener('click', (event) => {
     const target = event.target;
